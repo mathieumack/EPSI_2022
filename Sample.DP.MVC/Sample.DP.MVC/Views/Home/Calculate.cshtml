@@ -1,0 +1,16 @@
+﻿@model Sample.DP.MVC.Models.CalculateModel
+
+@{
+    ViewData["Title"] = "Calculate view";
+}
+<h1>@ViewData["Title"]</h1>
+
+Hello !!
+
+@Html.BeginForm()
+{
+    <p>@Html.TextBoxFor(model => model.Operator1)</p>
+    <p>@Html.TextBoxFor(model => model.Operator2)</p>
+    <p>@Html.DisplayTextFor(model => model.Result)</p>
+    <input type="submit">Calculer</input>
+}

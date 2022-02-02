@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sample.DP.MvvM
 {
-    internal class MainViewViewModel : INotifyPropertyChanged
+    public class MainViewViewModel : INotifyPropertyChanged
     {
         private int operator1 = 10;
         public int Operator1
@@ -21,6 +21,8 @@ namespace Sample.DP.MvvM
             {
                 operator1 = value;
                 NotifyPropertyChanged();
+                result = Calculate();
+                NotifyPropertyChanged(nameof(Result));
             }
         }
 

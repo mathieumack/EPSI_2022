@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Sample.DP.MVC.Models;
 using System.Diagnostics;
 
@@ -21,6 +22,23 @@ namespace Sample.DP.MVC.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Calculate()
+        {
+            var calculateModel = new CalculateModel();
+            calculateModel.Operator1 = 12;
+            calculateModel.Operator2 = 25;
+
+            return View(calculateModel);
+        }
+
+        [HttpPost]
+        public IActionResult Calculate(CalculateModel model)
+        {
+            model.Result = model.Operator1 + model.Operator2;
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
